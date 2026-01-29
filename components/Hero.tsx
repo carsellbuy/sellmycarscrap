@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import Image from 'next/image'; // Next.js Image ইম্পোর্ট
 import { ValuationForm } from './ValuationForm';
 import { Check } from 'lucide-react';
 
@@ -11,21 +12,25 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ customTitle, customSubtitle }) => {
   return (
-    <div className="relative bg-brand-dark overflow-hidden">
-      {/* Background Image with Overlay */}
+    <div className="relative bg-brand-dark overflow-hidden min-h-[600px] lg:min-h-[700px] flex items-center">
+      {/* Background Image with Overlay (Optimized) */}
       <div className="absolute inset-0 z-0">
-        <img 
-          src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&q=80&w=1920" 
+        <Image 
+          src="/tow-truck-hero.webp" // আপনার লোকাল ইমেজ
           alt="Car Towing Service Dubai" 
-          className="w-full h-full object-cover opacity-20"
+          fill
+          priority // এটি LCP ইম্প্রুভ করবে (সবচেয়ে জরুরি)
+          className="object-cover opacity-20"
+          quality={80} // ইমেজের সাইজ নিয়ন্ত্রণে রাখার জন্য
+          sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-brand-dark via-brand-dark/95 to-brand-dark/80 lg:to-transparent"></div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
           
-          {/* Text Content - Naturally appears first on mobile */}
+          {/* Text Content */}
           <div className="space-y-6 text-center lg:text-left">
             <h1 className="text-4xl lg:text-6xl font-sans font-bold text-white leading-tight">
               {customTitle ? customTitle : (
@@ -58,7 +63,7 @@ export const Hero: React.FC<HeroProps> = ({ customTitle, customSubtitle }) => {
             </div>
           </div>
 
-          {/* Form Container - Naturally appears second on mobile */}
+          {/* Form Container */}
           <div className="w-full max-w-md mx-auto lg:ml-auto">
              <ValuationForm />
           </div>

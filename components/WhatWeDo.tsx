@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import Image from 'next/image'; // Next.js Image ইম্পোর্ট করা হয়েছে
 import { 
   CarFront, 
   Recycle, 
@@ -55,18 +56,18 @@ export const WhatWeDo: React.FC = () => {
             </div>
           </div>
 
-          {/* Image Column */}
+          {/* Image Column (Optimized) */}
           <div className="order-1 lg:order-2">
-             <div className="relative rounded-xl overflow-hidden shadow-2xl group">
-                <div className="absolute inset-0 bg-brand-dark/10 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
-                {/* 
-                   IMPORTANT: Please save the user-provided image as 'scrap-car.jpg' 
-                   in your public folder for this to work correctly.
-                */}
-                <img
+             <div className="relative h-[400px] lg:h-[500px] w-full rounded-xl overflow-hidden shadow-2xl group">
+                <div className="absolute inset-0 bg-brand-dark/10 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
+                
+                <Image
                   src="/Sell-my-Car-yard.jpg" 
                   alt="Silver Lexus scrap car in Dubai yard"
-                  className="w-full h-[400px] lg:h-[500px] object-cover transform transition-transform duration-700 group-hover:scale-105"
+                  fill
+                  className="object-cover transform transition-transform duration-700 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
+                  priority // LCP ইম্প্রুভ করার জন্য এটি জরুরি
                 />
              </div>
           </div>

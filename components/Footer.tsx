@@ -13,7 +13,7 @@ export const Footer = () => {
           <div className="space-y-4">
             <Link href="/" className="flex items-center space-x-2 cursor-pointer">
               <Car className="h-6 w-6 text-brand-gold" />
-              <span className="font-serif text-xl font-bold">SellMyCar.ae</span>
+              <span className="font-serif text-xl font-bold">SellMyCarScrap</span>
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed">
               The most trusted car buying service in the UAE. We turn your car into cash in 30 minutes.

@@ -49,7 +49,7 @@ export const Navbar = () => {
                 <Car className="h-6 w-6 text-brand-dark" />
               </div>
               <span className="font-serif text-2xl font-bold tracking-tight text-white">
-                SellMyCar<span className="text-brand-gold">.ae</span>
+                SellMyCarScrap<span className="text-brand-gold"></span>
               </span>
             </Link>
 
