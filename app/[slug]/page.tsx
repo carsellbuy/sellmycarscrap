@@ -3,13 +3,10 @@ import { PortableText } from '@portabletext/react';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 
-// উল্লেখ্য: এখানে Navbar বা Footer ইম্পোর্ট করা হয়নি, কারণ layout.tsx এটা অটোমেটিক দেখাবে।
-
-// --- ১. ইমেজের জন্য স্পেশাল সেটিংস ---
+// --- ১. ইমেজের জন্য সেটিংস ---
 const ptComponents = {
   types: {
     image: ({ value }: any) => {
-      // যদি ইমেজের ডাটা না থাকে, তবে কিছুই দেখাবে না
       if (!value?.asset?._ref) {
         return null;
       }
@@ -56,7 +53,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
-// --- ৪. মেইন পেজ কম্পোনেন্ট ---
+// --- ৪. মেইন পেজ কম্পোনেন্ট (Schema সহ) ---
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const post = await getPost(slug);
@@ -65,13 +62,32 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     return notFound();
   }
 
+  // --- Article Schema তৈরি ---
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": post.title,
+    "image": post.mainImage ? urlFor(post.mainImage).url() : "",
+    "datePublished": post.publishedAt,
+    "author": {
+      "@type": "Organization",
+      "name": "SellMyCar.ae"
+    },
+    "description": post.metaDescription || post.title
+  };
+
   return (
-    // 'pt-32' দেওয়া হয়েছে যাতে হেডার এর নিচে লেখাগুলো দেখা যায়
     <main className="min-h-screen bg-white pt-32 pb-16">
       
+      {/* Schema Script Injection */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+
       <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* --- Header Section --- */}
+        {/* Header */}
         <div className="text-center mb-10">
           <p className="text-blue-600 font-medium mb-3">
             {new Date(post.publishedAt).toDateString()}
@@ -81,7 +97,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           </h1>
         </div>
 
-        {/* --- Featured Image (Top) --- */}
+        {/* Top Image */}
         {post.mainImage && (
           <div className="w-full mb-12">
             <div className="relative w-full h-[300px] md:h-[500px] rounded-2xl overflow-hidden shadow-lg">
@@ -96,7 +112,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           </div>
         )}
 
-        {/* --- Content Body (এখানে মাঝখানের ছবিগুলো আসবে) --- */}
+        {/* Body Content */}
         <div className="prose prose-lg prose-blue mx-auto prose-img:rounded-xl prose-headings:font-bold prose-a:text-blue-600 hover:prose-a:text-blue-500 transition-colors">
           <PortableText 
             value={post.body} 

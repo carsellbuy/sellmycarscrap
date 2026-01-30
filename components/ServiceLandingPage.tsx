@@ -16,12 +16,14 @@ import { SEO } from './SEO';
 interface ServiceLandingPageProps {
   title: React.ReactNode;
   subtitle: string;
-  // onNavigate আর দরকার নেই, কিন্তু যদি প্যারেন্ট ফাইল থেকে আসে তাই অপশনাল (?) রাখা হলো
-  onNavigate?: (view: string) => void; 
+  onNavigate?: (view: string) => void;
   location?: string;
   metaTitle: string;
   metaDescription: string;
   metaKeywords?: string;
+  // --- নতুন ২ লাইন (লাল দাগ ফিক্স করার জন্য) ---
+  contentHeading?: string; 
+  contentBody?: string;
 }
 
 export const ServiceLandingPage: React.FC<ServiceLandingPageProps> = ({ 
@@ -30,7 +32,10 @@ export const ServiceLandingPage: React.FC<ServiceLandingPageProps> = ({
   location,
   metaTitle,
   metaDescription,
-  metaKeywords
+  metaKeywords,
+  // --- এখানে রিসিভ করছি ---
+  contentHeading, 
+  contentBody
 }) => {
   
   useEffect(() => {
@@ -39,9 +44,6 @@ export const ServiceLandingPage: React.FC<ServiceLandingPageProps> = ({
 
   return (
     <>
-      {/* নোট: Next.js এ পেজের মেটাডাটা সাধারণত page.tsx ফাইলে export const metadata দিয়ে করা হয়।
-        তবে আপাতত এরর এড়াতে আপনার SEO কম্পোনেন্টটি রাখা হলো।
-      */}
       <SEO title={metaTitle} description={metaDescription} keywords={metaKeywords} />
       
       <Hero customTitle={title} customSubtitle={subtitle} />
@@ -49,12 +51,16 @@ export const ServiceLandingPage: React.FC<ServiceLandingPageProps> = ({
       <WhatWeDo />
       <HowItWorks />
       <Features />
-      <SeoContent location={location} />
+      
+      {/* --- নতুন ডাটা SeoContent এ পাঠিয়ে দিচ্ছি --- */}
+      <SeoContent 
+        location={location} 
+        customHeading={contentHeading} 
+        customBody={contentBody} 
+      />
+      
       <Testimonials />
-      
-      {/* পরিবর্তন: এখানে onNavigate প্রপসটি মুছে ফেলা হয়েছে */}
       <ServiceArea /> 
-      
       <FAQ />
       <ContactSection />
     </>
