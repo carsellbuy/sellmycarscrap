@@ -1,3 +1,4 @@
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import type { Metadata } from "next";
 import { Outfit, Playfair_Display } from "next/font/google"; 
 import { Navbar } from '@/components/Navbar';
@@ -6,6 +7,7 @@ import { MobileStickyFooter } from '@/components/MobileStickyFooter';
 import { ScrollToTop } from '@/components/ScrollToTop';
 import Script from 'next/script'; 
 import './globals.css';
+
 
 const outfit = Outfit({ 
   subsets: ["latin"],
@@ -59,6 +61,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         
         <main className="flex-grow">
           {children}
+          <SpeedInsights />
+          
         </main>
 
         <Footer />
