@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Phone, ChevronDown, MessageCircle } from 'lucide-react';
+import { trackButtonClick } from '@/lib/tracking';
 
 export const MobileStickyFooter: React.FC = () => {
   const [isExpanded, setIsExpanded] = useState(true);
@@ -19,25 +20,14 @@ export const MobileStickyFooter: React.FC = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const handleTrackClick = (method: string) => {
-    if (typeof window !== 'undefined') {
-      const dataLayer = (window as any).dataLayer || [];
-      dataLayer.push({
-        event: 'contact_click',
-        contact_method: method,
-        location: 'mobile_sticky_footer'
-      });
-    }
-  };
-
   const handleCall = () => {
-    handleTrackClick('phone');
+    trackButtonClick('mobile_sticky_footer_call'); // জিটিএম এ এই নামটি যাবে
     window.location.href = `tel:+${phoneNumber}`;
     setShowCallModal(false);
   };
 
   const handleWhatsApp = () => {
-    handleTrackClick('whatsapp');
+    trackButtonClick('mobile_sticky_footer_whatsapp'); // জিটিএম এ এই নামটি যাবে
     window.open(`https://wa.me/${phoneNumber}`, '_blank');
     setShowWhatsAppModal(false);
   };

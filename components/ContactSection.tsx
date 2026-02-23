@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { Phone, MessageCircle, Monitor, Check } from 'lucide-react';
+import { trackButtonClick } from '@/lib/tracking';
 
 export const ContactSection: React.FC = () => {
   const phoneNumber = "+971564990530"; 
@@ -12,6 +13,7 @@ export const ContactSection: React.FC = () => {
   const [showWhatsAppModal, setShowWhatsAppModal] = useState(false);
 
   const handleCopyBotim = () => {
+    trackButtonClick('contact_section_botim_copy'); // GTM ট্র্যাকিং
     navigator.clipboard.writeText(phoneNumber);
     setCopied(true);
     setTimeout(() => {
@@ -20,11 +22,13 @@ export const ContactSection: React.FC = () => {
   };
 
   const handleCall = () => {
+    trackButtonClick('contact_section_call'); // GTM ট্র্যাকিং
     window.location.href = `tel:${phoneNumber}`;
     setShowCallModal(false);
   };
 
   const handleWhatsApp = () => {
+    trackButtonClick('contact_section_whatsapp'); // GTM ট্র্যাকিং
     window.open(`https://wa.me/${phoneNumber.replace('+', '')}`, '_blank');
     setShowWhatsAppModal(false);
   };
