@@ -1,13 +1,12 @@
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { Outfit, Playfair_Display } from "next/font/google"; 
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { MobileStickyFooter } from '@/components/MobileStickyFooter';
 import { ScrollToTop } from '@/components/ScrollToTop';
-import Script from 'next/script'; 
+import { GoogleTagManager } from '@next/third-parties/google'; // অফিশিয়াল প্যাকেজ ইম্পোর্ট
 import './globals.css';
-
 
 const outfit = Outfit({ 
   subsets: ["latin"],
@@ -28,47 +27,25 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    // পরিবর্তন ১: এখানে suppressHydrationWarning যোগ করা হয়েছে
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <Script id="google-tag-manager" strategy="afterInteractive">
-          {`
-            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-KPS673JQ');
-          `}
-        </Script>
-      </head>
-
-      {/* পরিবর্তন ২: বডিতেও suppressHydrationWarning যোগ করা হয়েছে */}
       <body 
         className={`${outfit.variable} ${playfair.variable} flex flex-col min-h-screen bg-brand-light text-brand-dark font-sans antialiased`}
         suppressHydrationWarning={true}
       >
-        
-        <noscript>
-          <iframe 
-            src="https://www.googletagmanager.com/ns.html?id=GTM-KPS673JQ"
-            height="0" 
-            width="0" 
-            style={{ display: 'none', visibility: 'hidden' }}
-          />
-        </noscript>
-
         <Navbar />
         
         <main className="flex-grow">
           {children}
           <SpeedInsights />
-          
         </main>
 
         <Footer />
         <MobileStickyFooter />
         <ScrollToTop />
+        
       </body>
+      {/* বডির ঠিক বাইরে বা শেষে GTM কম্পোনেন্ট বসানো হলো */}
+      <GoogleTagManager gtmId="GTM-KPS673JQ" />
     </html>
   );
 }
