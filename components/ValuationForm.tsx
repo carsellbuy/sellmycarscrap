@@ -44,6 +44,7 @@ export const ValuationForm: React.FC = () => {
       lead_type: 'WhatsApp Quote',
       car_make: formData.make,
       car_model: formData.model,
+      phone_number: `+971${formData.phone}`,
       ecommerce: {
         currency: 'AED',
         value: 0, 

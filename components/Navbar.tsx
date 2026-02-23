@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation'; // পেজ ডিটেক্ট করার জন্য
 import { Menu, X, Phone, Car } from 'lucide-react';
+import { trackButtonClick } from '@/lib/tracking';
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,7 +14,8 @@ export const Navbar = () => {
   const phoneNumber = "+971564990530";
   const displayPhone = "+971 56 499 0530";
 
-  const confirmCall = () => {
+ const confirmCall = () => {
+    trackButtonClick('navbar_call_confirm'); // GTM এ কনফার্ম কলের ডাটা যাবে
     window.location.href = `tel:${phoneNumber}`;
     setShowCallModal(false);
   };
