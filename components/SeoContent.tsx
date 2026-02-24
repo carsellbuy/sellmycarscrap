@@ -34,8 +34,8 @@ export const SeoContent: React.FC<SeoContentProps> = ({
             </h2>
             
             <p>
-              Looking to <strong>sell your car in {location}</strong> for the best possible price? You've come to the right place. 
-              At SellMyCar.ae, we understand that selling a used vehicle in the UAE can be a stressful experience involving 
+              Looking to <strong>sell your scrap/ unused car in {location}</strong> for the best possible price? You've come to the right place. 
+              At SellMyCarscrap.com, we understand that selling a used vehicle in the UAE can be a stressful experience involving 
               unreliable buyers, endless negotiations, and complex RTA paperwork. We eliminate these hassles, offering you a 
               streamlined, transparent, and secure way to convert your car into cash instantly.
             </p>

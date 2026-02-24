@@ -34,7 +34,7 @@ export default async function Home() {
   const data = await getHomePageData();
 
   // --- ভেরিয়েবলগুলো এখন ফাংশনের ভেতরে (সঠিক জায়গা) ---
-  const heroTitle = data?.heroTitle || "Sell Your Car in Dubai";
+  const heroTitle = data?.heroTitle || "Sell Your Scrap Car in Dubai Just for 30 min";
   const heroSubtitle = data?.heroSubtitle || "Get instant cash for your used or scrap car. Free valuation and towing.";
 
   // --- 1. Organization Schema ---
