@@ -10,12 +10,12 @@ export const TermsOfService: React.FC = () => {
           <p>Last updated: {new Date().toLocaleDateString()}</p>
 
           <p>
-            Welcome to SellMyCar.ae. By accessing this website, you agree to be bound by these Terms and Conditions of Use, all applicable laws and regulations, and agree that you are responsible for compliance with any applicable local laws.
+            Welcome to SellMyCarScrap. By accessing this website, you agree to be bound by these Terms and Conditions of Use, all applicable laws and regulations, and agree that you are responsible for compliance with any applicable local laws.
           </p>
 
           <h3 className="text-xl font-bold text-gray-900">1. Use License</h3>
           <p>
-            Permission is granted to temporarily download one copy of the materials (information or software) on SellMyCar.ae’s website for personal, non-commercial transitory viewing only.
+            Permission is granted to temporarily download one copy of the materials (information or software) on SellMyCarScrap’s website for personal, non-commercial transitory viewing only.
           </p>
 
           <h3 className="text-xl font-bold text-gray-900">2. Valuation Services</h3>
@@ -30,7 +30,7 @@ export const TermsOfService: React.FC = () => {
 
           <h3 className="text-xl font-bold text-gray-900">4. Limitations</h3>
           <p>
-            In no event shall SellMyCar.ae or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on SellMyCar.ae’s website.
+            In no event shall SellMyCarScrap or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on SellMyCarScrap’s website.
           </p>
 
           <h3 className="text-xl font-bold text-gray-900">5. Governing Law</h3>

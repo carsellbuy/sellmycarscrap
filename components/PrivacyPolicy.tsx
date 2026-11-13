@@ -10,7 +10,7 @@ export const PrivacyPolicy: React.FC = () => {
           <p>Last updated: {new Date().toLocaleDateString()}</p>
 
           <p>
-            At SellMyCar.ae, we respect your privacy and are committed to protecting your personal data. This privacy policy will inform you as to how we look after your personal data when you visit our website and tell you about your privacy rights and how the law protects you.
+            At SellMyCarScrap, we respect your privacy and are committed to protecting your personal data. This privacy policy will inform you as to how we look after your personal data when you visit our website and tell you about your privacy rights and how the law protects you.
           </p>
 
           <h3 className="text-xl font-bold text-gray-900">1. Information We Collect</h3>

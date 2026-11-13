@@ -2,17 +2,16 @@ import { Metadata } from 'next';
 import { ServiceLandingPage } from '@/components/ServiceLandingPage';
 
 export const metadata: Metadata = {
-  title: 'Sell used or Old Car | Instant Cash Dubai',
-  description: 'Have an used car sitting in your parking? Sell it today for instant cash. We buy non-running and old cars.',
+  alternates: { canonical: '/sell-used-car' },
+  title: 'Sell Your Used Car in Dubai | Instant Cash Offer',
+  description: 'Want to sell your used car in Dubai? Get a fair price and instant cash. We buy used cars of any make, model and mileage, with free inspection and RTA transfer.',
 };
 
 export default function SellUnusedCarPage() {
   return (
     <ServiceLandingPage 
-      title={<>Sell Your <span className="text-brand-gold">Unused Car</span> Fast</>}
-      subtitle="Stop paying fines for a car you don't use. We buy old, used, and parked cars from your doorstep."
-      metaTitle="Sell used Car"
-      metaDescription="Cash for used cars."
+      title={<>Sell Your <span className="text-brand-gold">Used Car</span> for Instant Cash</>}
+      subtitle="Get a fair market price for your used car in minutes. Free inspection at your doorstep and same-day payment."
     />
   );
 }

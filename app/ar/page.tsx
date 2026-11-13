@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ArabicLeadForm } from "@/components/ArabicLeadForm";
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/ar', languages: { en: '/', ar: '/ar' } },
   title: "شراء سيارات سكراب في دبي | أعلى سعر كاش فوري",
   description: "نشتري سيارات سكراب، متضررة، أو غير قابلة للتشغيل. احصل على تقييم مجاني وكاش فوري اليوم في دبي، الشارقة، وعجمان.",
   keywords: "شراء سيارات سكراب، سكراب سيارات دبي، بيع سيارة سكراب، سكراب الشارقة",

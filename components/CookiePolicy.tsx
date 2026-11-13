@@ -16,7 +16,7 @@ export const CookiePolicy: React.FC = () => {
             Cookies are small text files that are sent to your web browser by a website you visit. A cookie file is stored in your web browser and allows the Service or a third-party to recognize you and make your next visit easier and the Service more useful to you.
           </p>
 
-          <h3 className="text-xl font-bold text-gray-900">How SellMyCar.ae uses cookies</h3>
+          <h3 className="text-xl font-bold text-gray-900">How SellMyCarScrap uses cookies</h3>
           <p>
             When you use and access the Service, we may place a number of cookies files in your web browser. We use cookies for the following purposes:
           </p>

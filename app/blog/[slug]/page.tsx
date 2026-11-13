@@ -19,6 +19,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: post.metaTitle || post.title,
     description: post.metaDescription,
+    alternates: { canonical: `/blog/${post.slug}` },
   };
 }
 
@@ -56,7 +57,7 @@ export default async function BlogPostPage({ params }: Props) {
     headline: post.title,
     ...(post.mainImage && { image: post.mainImage.src }),
     datePublished: post.publishedAt,
-    author: { '@type': 'Organization', name: 'SellMyCar.ae' },
+    author: { '@type': 'Organization', name: 'SellMyCarScrap' },
     description: post.metaDescription || post.title,
   };
 

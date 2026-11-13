@@ -123,7 +123,7 @@ export const Footer = () => {
       <div className="bg-black py-6 border-t border-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4 text-gray-500 text-sm">
           <p className="flex items-center gap-2 flex-wrap justify-center">
-            <span>&copy; {new Date().getFullYear()} SellMyCar.ae. All rights reserved.</span>
+            <span>&copy; {new Date().getFullYear()} SellMyCarScrap. All rights reserved.</span>
             <span className="hidden md:inline text-gray-700">|</span>
             <span className="flex items-center gap-1">
                Developed by <a href="https://zasstech.top" target="_blank" rel="noopener noreferrer" className="text-brand-gold hover:text-white transition-colors font-semibold">Zass Tech</a>

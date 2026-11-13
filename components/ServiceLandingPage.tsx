@@ -15,12 +15,6 @@ interface ServiceLandingPageProps {
   subtitle: string;
   onNavigate?: (view: string) => void;
   location?: string;
-  /** @deprecated Page metadata now comes from each page's `export const metadata`. */
-  metaTitle?: string;
-  /** @deprecated */
-  metaDescription?: string;
-  /** @deprecated */
-  metaKeywords?: string;
   // --- নতুন ২ লাইন (লাল দাগ ফিক্স করার জন্য) ---
   contentHeading?: string; 
   contentBody?: string;

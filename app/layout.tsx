@@ -6,6 +6,7 @@ import { Footer } from '@/components/Footer';
 import { MobileStickyFooter } from '@/components/MobileStickyFooter';
 import { ScrollToTop } from '@/components/ScrollToTop';
 import { GoogleTagManager } from '@next/third-parties/google'; // অফিশিয়াল প্যাকেজ ইম্পোর্ট
+import { SITE_NAME, SITE_URL } from '@/lib/site';
 import './globals.css';
 
 const outfit = Outfit({ 
@@ -21,8 +22,16 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: 'Sell Your Car in Dubai | Instant Cash & Free Valuation | SellMyCar.ae',
+  metadataBase: new URL(SITE_URL),
+  title: 'Sell Your Car in Dubai | Instant Cash & Free Valuation | SellMyCarScrap',
   description: 'Sell your scrap or used car in Dubai for instant cash. We buy any car in any condition. Free valuation, free towing, and RTA paperwork handling.',
+  openGraph: {
+    type: 'website',
+    siteName: SITE_NAME,
+    locale: 'en_AE',
+    images: [{ url: '/tow-truck-hero.webp', alt: 'SellMyCarScrap tow truck collecting a car in Dubai' }],
+  },
+  twitter: { card: 'summary_large_image' },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

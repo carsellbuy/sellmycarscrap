@@ -2,9 +2,10 @@ import type { Metadata } from 'next';
 import { CookiePolicy } from '@/components/CookiePolicy';
 
 export const metadata: Metadata = {
-  title: 'Cookie Policy | SellMyCar.ae',
+  alternates: { canonical: '/cookies' },
+  title: 'Cookie Policy | SellMyCarScrap',
   description:
-    'Understand how SellMyCar.ae uses cookies to improve your user experience and analyze website traffic.',
+    'Understand how SellMyCarScrap uses cookies to improve your user experience and analyze website traffic.',
 };
 
 export default function CookiesPage() {

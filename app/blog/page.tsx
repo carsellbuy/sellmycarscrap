@@ -4,7 +4,8 @@ import Image from 'next/image';
 import { getAllPosts } from '@/data/posts';
 
 export const metadata: Metadata = {
-  title: 'Car Selling Tips & Guides | SellMyCar.ae Blog',
+  alternates: { canonical: '/blog' },
+  title: 'Car Selling Tips & Guides | SellMyCarScrap Blog',
   description: 'Read our latest articles about selling cars in Dubai, car valuation tips, and RTA transfer guides.',
 };
 

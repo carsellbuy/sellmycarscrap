@@ -13,9 +13,9 @@ import type { Metadata } from "next";
 // 1. স্ট্যাটিক ডাটা অবজেক্ট (Sanity এর বিকল্প)
 const homePageData = {
   metaTitle: "Sell Your Car in Dubai | Instant Cash & Free Valuation",
-  metaDescription: "Sell your scrap or used car in Dubai for instant cash.",
+  metaDescription: "Sell your scrap, used or damaged car in Dubai for instant cash. Free valuation, free towing and RTA paperwork handled. Get your offer in 30 minutes.",
   keywords: "sell my car dubai, scrap car buyers, sell used car uae",
-  heroTitle: "Sell Your Scrap Car in Dubai Just for 30 min",
+  heroTitle: "Sell Your Scrap Car in Dubai in Just 30 Minutes",
   heroSubtitle: "Get instant cash for your used or scrap car. Free valuation and towing.",
   seoHeading: "Why Choose Our Scrap Car Buying Service in Dubai?",
   seoBody: "Selling your car in Dubai has never been easier. We offer top cash for scrap, used, and damaged cars. Our process is simple, fast, and completely hassle free."
@@ -27,6 +27,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: homePageData.metaTitle,
     description: homePageData.metaDescription,
     keywords: homePageData.keywords,
+    alternates: { canonical: '/', languages: { en: '/', ar: '/ar' } },
   };
 }
 
@@ -37,9 +38,8 @@ export default function Home() {
   const orgSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "SellMyCar.ae",
+    "name": "SellMyCarScrap",
     "url": "https://sellmycarscrap.com",
-    "logo": "",
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "+971564990530",

@@ -32,7 +32,7 @@ export const Features: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
-            <h2 className="text-brand-gold font-bold tracking-widest uppercase mb-2">Why Choose SellMyCar</h2>
+            <h2 className="text-brand-gold font-bold tracking-widest uppercase mb-2">Why Choose SellMyCarScrap</h2>
             <h3 className="text-3xl md:text-4xl font-serif font-bold mb-6">The Smartest Way to Sell Your Car</h3>
             <p className="text-gray-400 mb-8 text-lg">
               Avoid the hassle of private buyers, endless negotiations, and risky payments. We offer a professional, streamlined service tailored for the UAE market.
