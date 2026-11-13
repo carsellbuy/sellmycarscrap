@@ -1,19 +1,11 @@
 import { Metadata } from 'next';
-import { ServiceLandingPage } from '@/components/ServiceLandingPage';
+import { AbuDhabiLandingPage } from '@/components/abu-dhabi';
 
 export const metadata: Metadata = {
-  title: 'Sell Your scrap Car in Abu Dhabi | Top Rated Car Buyers',
-  description: 'Sell your scrap car in Abu Dhabi easily. Free valuation and instant cash for used and scrap cars in Abu Dhabi.',
+  title: 'Sell Your Scrap Car in Abu Dhabi | Top Rated Buyers',
+  description: 'Sell your scrap car in Abu Dhabi easily. Free valuation and instant cash for used and scrap cars.',
 };
 
 export default function SellCarAbuDhabiPage() {
-  return (
-    <ServiceLandingPage 
-      title={<>Sell Your Scrap Car in <span className="text-brand-gold">Abu Dhabi</span> In Just 30 min</>}
-      subtitle="Hassle-free car selling experience in the capital. We handle all the paperwork."
-      location="Abu Dhabi"
-      metaTitle="Sell Your scrap Car in Abu Dhabi"
-      metaDescription="Sell your scrap car for cash in Abu Dhabi."
-    />
-  );
+  return <AbuDhabiLandingPage />;
 }

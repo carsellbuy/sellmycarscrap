@@ -1,53 +1,19 @@
-import { client, urlFor } from '@/lib/sanity';
-import { PortableText } from '@portabletext/react';
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
+import { getAllPosts, getPostBySlug, type PostBlock } from '@/data/posts';
 
-// উল্লেখ্য: এখানে Navbar বা Footer ইম্পোর্ট করা হয়নি, কারণ layout.tsx এটা অটোমেটিক দেখাবে।
+type Props = { params: Promise<{ slug: string }> };
 
-// --- ১. ইমেজের জন্য স্পেশাল সেটিংস ---
-const ptComponents = {
-  types: {
-    image: ({ value }: any) => {
-      // যদি ইমেজের ডাটা না থাকে, তবে কিছুই দেখাবে না
-      if (!value?.asset?._ref) {
-        return null;
-      }
-      return (
-        <div className="relative w-full h-[300px] md:h-[500px] my-8 rounded-xl overflow-hidden bg-gray-50 border border-gray-100">
-          <Image
-            src={urlFor(value).url()}
-            alt={value.alt || 'Blog Content Image'}
-            fill
-            className="object-contain"
-          />
-        </div>
-      );
-    },
-  },
-};
+export const dynamicParams = false;
 
-// --- ২. ডাটা আনার ফাংশন ---
-async function getPost(slug: string) {
-  const query = `
-    *[_type == "post" && slug.current == $slug][0] {
-      title,
-      mainImage,
-      publishedAt,
-      body,
-      metaTitle,
-      metaDescription
-    }
-  `;
-  const post = await client.fetch(query, { slug });
-  return post;
+export function generateStaticParams() {
+  return getAllPosts().map((post) => ({ slug: post.slug }));
 }
 
-// --- ৩. SEO Metadata ---
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const post = await getPost(slug);
-  
+  const post = getPostBySlug(slug);
   if (!post) return { title: 'Post not found' };
 
   return {
@@ -56,56 +22,70 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
-// --- ৪. মেইন পেজ কম্পোনেন্ট ---
-export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
-  const post = await getPost(slug);
-
-  if (!post) {
-    return notFound();
+function Block({ block }: { block: PostBlock }) {
+  switch (block.type) {
+    case 'heading':
+      return <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mt-10 mb-4">{block.text}</h2>;
+    case 'list':
+      return (
+        <ul className="list-disc pl-6 space-y-2 my-6">
+          {block.items.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+      );
+    case 'image':
+      return (
+        <div className="relative w-full h-[300px] md:h-[500px] my-8 rounded-xl overflow-hidden bg-gray-50 border border-gray-100">
+          <Image src={block.src} alt={block.alt} fill sizes="(max-width: 896px) 100vw, 896px" className="object-contain" />
+        </div>
+      );
+    default:
+      return <p className="my-5">{block.text}</p>;
   }
+}
+
+export default async function BlogPostPage({ params }: Props) {
+  const { slug } = await params;
+  const post = getPostBySlug(slug);
+  if (!post) notFound();
+
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    ...(post.mainImage && { image: post.mainImage.src }),
+    datePublished: post.publishedAt,
+    author: { '@type': 'Organization', name: 'SellMyCar.ae' },
+    description: post.metaDescription || post.title,
+  };
 
   return (
-    // 'pt-32' দেওয়া হয়েছে যাতে হেডার এর নিচে লেখাগুলো দেখা যায়
-    <main className="min-h-screen bg-white pt-32 pb-16">
-      
+    <div className="min-h-screen bg-white pt-32 pb-16">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+
       <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* --- Header Section --- */}
         <div className="text-center mb-10">
           <p className="text-blue-600 font-medium mb-3">
-            {new Date(post.publishedAt).toDateString()}
+            {new Date(post.publishedAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })}
           </p>
-          <h1 className="text-3xl md:text-5xl font-bold text-gray-900 leading-tight">
-            {post.title}
-          </h1>
+          <h1 className="text-3xl md:text-5xl font-bold text-gray-900 leading-tight">{post.title}</h1>
         </div>
 
-        {/* --- Featured Image (Top) --- */}
         {post.mainImage && (
           <div className="w-full mb-12">
             <div className="relative w-full h-[300px] md:h-[500px] rounded-2xl overflow-hidden shadow-lg">
-              <Image
-                src={urlFor(post.mainImage).url()}
-                alt={post.title}
-                fill
-                className="object-cover"
-                priority
-              />
+              <Image src={post.mainImage.src} alt={post.mainImage.alt} fill sizes="(max-width: 896px) 100vw, 896px" className="object-cover" priority />
             </div>
           </div>
         )}
 
-        {/* --- Content Body (এখানে মাঝখানের ছবিগুলো আসবে) --- */}
-        <div className="prose prose-lg prose-blue mx-auto prose-img:rounded-xl prose-headings:font-bold prose-a:text-blue-600 hover:prose-a:text-blue-500 transition-colors">
-          <PortableText 
-            value={post.body} 
-            components={ptComponents} 
-          />
+        <div className="text-lg leading-relaxed text-gray-700">
+          {post.body.map((block, i) => (
+            <Block key={i} block={block} />
+          ))}
         </div>
-
       </article>
-
-    </main>
+    </div>
   );
 }

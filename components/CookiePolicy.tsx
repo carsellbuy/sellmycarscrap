@@ -1,17 +1,8 @@
-import React, { useEffect } from 'react';
-import { SEO } from './SEO';
+import React from 'react';
 
 export const CookiePolicy: React.FC = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   return (
     <div className="bg-white min-h-screen pt-10 pb-20">
-      <SEO 
-        title="Cookie Policy | SellMyCar.ae"
-        description="Understand how SellMyCar.ae uses cookies to improve your user experience and analyze website traffic."
-      />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 className="text-4xl font-serif font-bold text-gray-900 mb-8 border-b pb-4">Cookie Policy</h1>
         
@@ -42,7 +33,7 @@ export const CookiePolicy: React.FC = () => {
 
           <h3 className="text-xl font-bold text-gray-900">Managing cookies</h3>
           <p>
-            If you'd like to delete cookies or instruct your web browser to delete or refuse cookies, please visit the help pages of your web browser. Please note, however, that if you delete cookies or refuse to accept them, you might not be able to use all of the features we offer, you may not be able to store your preferences, and some of our pages might not display properly.
+            If you’d like to delete cookies or instruct your web browser to delete or refuse cookies, please visit the help pages of your web browser. Please note, however, that if you delete cookies or refuse to accept them, you might not be able to use all of the features we offer, you may not be able to store your preferences, and some of our pages might not display properly.
           </p>
         </div>
       </div>

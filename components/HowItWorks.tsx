@@ -29,7 +29,7 @@ export const HowItWorks: React.FC = () => {
           <h2 className="text-brand-gold font-bold tracking-widest uppercase mb-2">Simple Process</h2>
           <h3 className="text-3xl md:text-4xl font-serif font-bold text-brand-dark">How to Sell Your Car</h3>
           <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
-            Selling your car in Dubai doesn't have to be complicated. We've simplified it into three easy steps.
+            Selling your car in Dubai doesn’t have to be complicated. We’ve simplified it into three easy steps.
           </p>
         </div>
 

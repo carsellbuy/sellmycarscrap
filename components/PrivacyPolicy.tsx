@@ -1,17 +1,8 @@
-import React, { useEffect } from 'react';
-import { SEO } from './SEO';
+import React from 'react';
 
 export const PrivacyPolicy: React.FC = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   return (
     <div className="bg-white min-h-screen pt-10 pb-20">
-      <SEO 
-        title="Privacy Policy | SellMyCar.ae"
-        description="Read our privacy policy to understand how SellMyCar.ae collects, uses, and protects your personal data when you use our car buying services."
-      />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 className="text-4xl font-serif font-bold text-gray-900 mb-8 border-b pb-4">Privacy Policy</h1>
         

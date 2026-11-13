@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Phone, ChevronDown, MessageCircle } from 'lucide-react';
 import { trackButtonClick } from '@/lib/tracking';
 
@@ -8,17 +8,9 @@ export const MobileStickyFooter: React.FC = () => {
   const [isExpanded, setIsExpanded] = useState(true);
   const [showCallModal, setShowCallModal] = useState(false);
   const [showWhatsAppModal, setShowWhatsAppModal] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
   
   const phoneNumber = "971564990530"; 
   const displayPhone = "+971 56 499 0530";
-
-  useEffect(() => {
-    setIsMounted(true);
-    // Slight delay to ensure animation plays nicely on load
-    const timer = setTimeout(() => setIsExpanded(true), 500);
-    return () => clearTimeout(timer);
-  }, []);
 
   const handleCall = () => {
     trackButtonClick('mobile_sticky_footer_call'); // জিটিএম এ এই নামটি যাবে
@@ -32,7 +24,6 @@ export const MobileStickyFooter: React.FC = () => {
     setShowWhatsAppModal(false);
   };
 
-  if (!isMounted) return null;
 
   return (
     <>

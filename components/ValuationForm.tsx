@@ -2,7 +2,8 @@
 
 import React, { useState } from 'react';
 import { CAR_BRANDS } from '../constants';
-import { Loader2, Send, ArrowRight } from 'lucide-react';
+import { Loader2, Send } from 'lucide-react';
+import { WHATSAPP_NUMBER, normalizeUAEMobile, pushLeadEvent } from '@/lib/lead';
 
 export const ValuationForm: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -19,53 +20,29 @@ export const ValuationForm: React.FC = () => {
     if (name === 'phone') setError(''); // Clear error when typing
   };
 
-  const validateUAEPhone = (phone: string) => {
-    // Remove spaces, dashes, or non-numeric characters
-    const cleanNumber = phone.replace(/\D/g, '');
-    
-    // Check if it starts with 5 (mobile) and is 9 digits long
-    const uaeRegex = /^(50|51|52|54|55|56|58)\d{7}$/;
-    
-    return uaeRegex.test(cleanNumber);
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    if (!validateUAEPhone(formData.phone)) {
-      setError('Please enter a valid UAE mobile number (e.g. 501234567)');
+
+    const phone = normalizeUAEMobile(formData.phone);
+    if (!phone) {
+      setError('Please enter a valid UAE mobile number (e.g. 050 123 4567)');
       return;
     }
 
-    // Push event to DataLayer for GTM/Google Ads conversion tracking
-    const dataLayer = (window as any).dataLayer || [];
-    dataLayer.push({
-      event: 'generate_lead',
-      lead_type: 'WhatsApp Quote',
-      car_make: formData.make,
-      car_model: formData.model,
-      phone_number: `+971${formData.phone}`,
-      ecommerce: {
-        currency: 'AED',
-        value: 0, 
-        items: [{
-          item_name: `${formData.make} ${formData.model}`,
-          item_category: 'Car Inquiry'
-        }]
-      }
-    });
+    // GTM / Google Ads conversion event (no phone number: PII is not allowed in GA)
+    pushLeadEvent({ leadType: 'WhatsApp Quote', carMake: formData.make, carModel: formData.model });
 
     setIsSubmitting(true);
 
-    // Artificial delay to provide UI feedback (better UX than instant redirect)
+    // Short delay for UI feedback before opening WhatsApp
     await new Promise(resolve => setTimeout(resolve, 800));
 
-    // Construct WhatsApp Message
-    const text = `Hi, I would like an offer for my car.%0A%0AMake: ${formData.make}%0AModel: ${formData.model}%0APhone: +971${formData.phone}`;
-    const whatsappUrl = `https://wa.me/+971564990530?text=${text}`;
-    
-    // Redirect
-    window.open(whatsappUrl, '_blank');
+    const text = `Hi, I would like an offer for my car.
+
+Make: ${formData.make}
+Model: ${formData.model}
+Phone: +971${phone}`;
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, '_blank');
     setIsSubmitting(false);
   };
 
@@ -122,7 +99,7 @@ export const ValuationForm: React.FC = () => {
                 type="tel"
                 name="phone"
                 required
-                maxLength={9}
+                maxLength={16}
                 placeholder="50 123 4567"
                 className={`w-full rounded-xl border bg-gray-50 p-3.5 pl-16 text-gray-900 outline-none transition-all duration-300 ease-out focus:bg-white focus:shadow-lg focus:ring-4 ${
                   error 

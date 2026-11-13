@@ -1,7 +1,6 @@
 import React from 'react';
 import Link from 'next/link'; // Link ইম্পোর্ট করা হয়েছে
 import { Car, Facebook, Twitter, Instagram, Phone, Mail, MapPin } from 'lucide-react';
-import { NAV_LINKS } from '../constants';
 
 export const Footer = () => {
   return (

@@ -1,17 +1,8 @@
-import React, { useEffect } from 'react';
-import { SEO } from './SEO';
+import React from 'react';
 
 export const TermsOfService: React.FC = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   return (
     <div className="bg-white min-h-screen pt-10 pb-20">
-      <SEO 
-        title="Terms of Service | SellMyCar.ae"
-        description="Review the terms and conditions for using SellMyCar.ae services. Understanding your rights and obligations when selling your car to us."
-      />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 className="text-4xl font-serif font-bold text-gray-900 mb-8 border-b pb-4">Terms of Service</h1>
         
@@ -24,7 +15,7 @@ export const TermsOfService: React.FC = () => {
 
           <h3 className="text-xl font-bold text-gray-900">1. Use License</h3>
           <p>
-            Permission is granted to temporarily download one copy of the materials (information or software) on SellMyCar.ae's website for personal, non-commercial transitory viewing only.
+            Permission is granted to temporarily download one copy of the materials (information or software) on SellMyCar.ae’s website for personal, non-commercial transitory viewing only.
           </p>
 
           <h3 className="text-xl font-bold text-gray-900">2. Valuation Services</h3>
@@ -39,7 +30,7 @@ export const TermsOfService: React.FC = () => {
 
           <h3 className="text-xl font-bold text-gray-900">4. Limitations</h3>
           <p>
-            In no event shall SellMyCar.ae or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on SellMyCar.ae's website.
+            In no event shall SellMyCar.ae or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on SellMyCar.ae’s website.
           </p>
 
           <h3 className="text-xl font-bold text-gray-900">5. Governing Law</h3>

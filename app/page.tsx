@@ -1,4 +1,3 @@
-import { client } from "@/lib/sanity";
 import { Hero } from "@/components/Hero";
 import { HowItWorks } from "@/components/HowItWorks";
 import { TrustBadges } from "@/components/TrustBadges";
@@ -11,33 +10,30 @@ import { WhatWeDo } from "@/components/WhatWeDo";
 import { ServiceArea } from "@/components/ServiceArea";
 import type { Metadata } from "next";
 
-// 1. ডাটা আনার ফাংশন
-async function getHomePageData() {
-  const query = `*[_type == "homePage"][0]`;
-  const data = await client.fetch(query, {}, { cache: 'no-store' });
-  return data;
-}
+// 1. স্ট্যাটিক ডাটা অবজেক্ট (Sanity এর বিকল্প)
+const homePageData = {
+  metaTitle: "Sell Your Car in Dubai | Instant Cash & Free Valuation",
+  metaDescription: "Sell your scrap or used car in Dubai for instant cash.",
+  keywords: "sell my car dubai, scrap car buyers, sell used car uae",
+  heroTitle: "Sell Your Scrap Car in Dubai Just for 30 min",
+  heroSubtitle: "Get instant cash for your used or scrap car. Free valuation and towing.",
+  seoHeading: "Why Choose Our Scrap Car Buying Service in Dubai?",
+  seoBody: "Selling your car in Dubai has never been easier. We offer top cash for scrap, used, and damaged cars. Our process is simple, fast, and completely hassle free."
+};
 
 // 2. ডাইনামিক মেটাডাটা
 export async function generateMetadata(): Promise<Metadata> {
-  const data = await getHomePageData();
-
   return {
-    title: data?.metaTitle || "Sell Your Car in Dubai | Instant Cash & Free Valuation",
-    description: data?.metaDescription || "Sell your scrap or used car in Dubai for instant cash.",
-    keywords: data?.keywords || "sell my car dubai, scrap car buyers, sell used car uae",
+    title: homePageData.metaTitle,
+    description: homePageData.metaDescription,
+    keywords: homePageData.keywords,
   };
 }
 
 // 3. মেইন কম্পোনেন্ট
-export default async function Home() {
-  const data = await getHomePageData();
-
-  // --- ভেরিয়েবলগুলো এখন ফাংশনের ভেতরে (সঠিক জায়গা) ---
-  const heroTitle = data?.heroTitle || "Sell Your Scrap Car in Dubai Just for 30 min";
-  const heroSubtitle = data?.heroSubtitle || "Get instant cash for your used or scrap car. Free valuation and towing.";
-
-  // --- 1. Organization Schema ---
+export default function Home() {
+  
+  // Organization Schema 
   const orgSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -51,7 +47,7 @@ export default async function Home() {
     }
   };
 
-  // --- 2. FAQ Schema ---
+  // FAQ Schema 
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -69,7 +65,7 @@ export default async function Home() {
         "name": "Do you buy scrap cars?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes, we buy cars in any condition, including scrap, damaged, and non-running vehicles."
+          "text": "Yes, we buy cars in any condition, including scrap, damaged, and non running vehicles."
         }
       }
     ]
@@ -77,7 +73,7 @@ export default async function Home() {
 
   return (
     <>
-      {/* --- স্কিমা ইনজেকশন --- */}
+      {/* স্কিমা ইনজেকশন */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
@@ -87,10 +83,10 @@ export default async function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      {/* --- কম্পোনেন্টসমূহ --- */}
+      {/* কম্পোনেন্টসমূহ */}
       <Hero 
-        customTitle={<span className="text-white">{heroTitle}</span>} 
-        customSubtitle={heroSubtitle} 
+        customTitle={<span className="text-white">{homePageData.heroTitle}</span>} 
+        customSubtitle={homePageData.heroSubtitle} 
       />
       
       <TrustBadges />
@@ -99,8 +95,8 @@ export default async function Home() {
       <Features />
       
       <SeoContent 
-        customHeading={data?.seoHeading}
-        customBody={data?.seoBody}
+        customHeading={homePageData.seoHeading}
+        customBody={homePageData.seoBody}
       />
 
       <Testimonials />

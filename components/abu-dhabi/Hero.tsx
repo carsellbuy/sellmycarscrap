@@ -1,0 +1,57 @@
+"use client";
+
+import React from 'react';
+import Image from 'next/image';
+import { ValuationForm } from '../ValuationForm'; // গ্লোবাল ফর্ম
+import { Check } from 'lucide-react';
+
+export const AbuDhabiHero = () => {
+  return (
+    <div className="relative bg-brand-dark overflow-hidden min-h-[600px] lg:min-h-[700px] flex items-center">
+      <div className="absolute inset-0 z-0">
+        <Image 
+          src="/tow-truck-hero.webp" 
+          alt="Car Towing Service Abu Dhabi" 
+          fill
+          priority 
+          className="object-cover opacity-20"
+          quality={80} 
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-brand-dark via-brand-dark/95 to-brand-dark/80 lg:to-transparent"></div>
+      </div>
+
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+          
+          <div className="space-y-6 text-center lg:text-left">
+            <h1 className="text-4xl lg:text-6xl font-sans font-bold text-white leading-tight">
+              Sell Your Scrap Car in <br />
+              <span className="text-brand-gold">Abu Dhabi</span> In 30 Min!
+            </h1>
+            
+            <p className="text-lg text-gray-300 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+              We offer top cash for used and scrap cars in the capital city. Get a hassle free valuation today.
+            </p>
+
+            <div className="flex flex-wrap justify-center lg:justify-start gap-4 lg:gap-6 pt-2">
+              <div className="flex items-center gap-2">
+                <Check className="h-5 w-5 text-brand-gold" strokeWidth={3} />
+                <span className="text-white font-bold">Instant Cash</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Check className="h-5 w-5 text-brand-gold" strokeWidth={3} />
+                <span className="text-white font-bold">Free Towing</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="w-full max-w-md mx-auto lg:ml-auto">
+             <ValuationForm />
+          </div>
+
+        </div>
+      </div>
+    </div>
+  );
+};
