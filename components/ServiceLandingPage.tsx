@@ -35,8 +35,8 @@ export const ServiceLandingPage: React.FC<ServiceLandingPageProps> = ({
       <Hero customTitle={title} customSubtitle={subtitle} />
       <TrustBadges />
       <WhatWeDo />
-      <HowItWorks />
       <RecentBuys />
+      <HowItWorks />
       <Features />
       
       {/* --- নতুন ডাটা SeoContent এ পাঠিয়ে দিচ্ছি --- */}

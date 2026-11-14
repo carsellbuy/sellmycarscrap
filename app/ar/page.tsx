@@ -65,6 +65,8 @@ export default function ArabicLandingPage() {
         </div>
       </section>
 
+      <RecentBuys locale="ar" />
+
       {/* ⚙️ Process Section */}
       <section className="bg-white py-16 px-4">
         <div className="max-w-6xl mx-auto">
@@ -90,8 +92,6 @@ export default function ArabicLandingPage() {
           </div>
         </div>
       </section>
-
-      <RecentBuys locale="ar" />
 
       {/* 🚗 Car Types & 💵 Price Section */}
       <section className="py-16 px-4 max-w-6xl mx-auto">

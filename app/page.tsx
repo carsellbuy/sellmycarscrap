@@ -92,8 +92,8 @@ export default function Home() {
       
       <TrustBadges />
       <WhatWeDo />
-      <HowItWorks />
       <RecentBuys />
+      <HowItWorks />
       <Features />
       
       <SeoContent 

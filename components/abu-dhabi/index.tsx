@@ -23,8 +23,8 @@ export const AbuDhabiLandingPage = () => {
       <AbuDhabiHero />
       <TrustBadges />
       <WhatWeDo />
-      <HowItWorks />
       <RecentBuys />
+      <HowItWorks />
       <AbuDhabiFeatures />
       <AbuDhabiSeoContent />
       <AbuDhabiTestimonials />
