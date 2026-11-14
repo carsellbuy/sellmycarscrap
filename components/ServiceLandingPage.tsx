@@ -9,6 +9,7 @@ import { Testimonials } from './Testimonials';
 import { WhatWeDo } from './WhatWeDo';
 import { ServiceArea } from './ServiceArea';
 import { SeoContent } from './SeoContent';
+import { RecentBuys } from './RecentBuys';
 
 interface ServiceLandingPageProps {
   title: React.ReactNode;
@@ -35,6 +36,7 @@ export const ServiceLandingPage: React.FC<ServiceLandingPageProps> = ({
       <TrustBadges />
       <WhatWeDo />
       <HowItWorks />
+      <RecentBuys />
       <Features />
       
       {/* --- নতুন ডাটা SeoContent এ পাঠিয়ে দিচ্ছি --- */}

@@ -8,6 +8,7 @@ import { ContactSection } from "@/components/ContactSection";
 import { Testimonials } from "@/components/Testimonials";
 import { WhatWeDo } from "@/components/WhatWeDo";
 import { ServiceArea } from "@/components/ServiceArea";
+import { RecentBuys } from "@/components/RecentBuys";
 import type { Metadata } from "next";
 
 // 1. স্ট্যাটিক ডাটা অবজেক্ট (Sanity এর বিকল্প)
@@ -92,6 +93,7 @@ export default function Home() {
       <TrustBadges />
       <WhatWeDo />
       <HowItWorks />
+      <RecentBuys />
       <Features />
       
       <SeoContent 

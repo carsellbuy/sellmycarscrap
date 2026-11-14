@@ -13,6 +13,7 @@ import { AbuDhabiFaq } from './FAQ';
 import { TrustBadges } from '../TrustBadges';
 import { WhatWeDo } from '../WhatWeDo'; 
 import { HowItWorks } from '../HowItWorks';
+import { RecentBuys } from '../RecentBuys';
 import { ServiceArea } from '../ServiceArea';
 import { ContactSection } from '../ContactSection';
 
@@ -23,6 +24,7 @@ export const AbuDhabiLandingPage = () => {
       <TrustBadges />
       <WhatWeDo />
       <HowItWorks />
+      <RecentBuys />
       <AbuDhabiFeatures />
       <AbuDhabiSeoContent />
       <AbuDhabiTestimonials />

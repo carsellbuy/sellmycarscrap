@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { CallButton } from "@/components/CallButton";
+import { RecentBuys } from "@/components/RecentBuys";
 import { PHONE_DISPLAY } from "@/lib/lead";
 
 export const metadata: Metadata = {
@@ -89,6 +90,8 @@ export default function ArabicLandingPage() {
           </div>
         </div>
       </section>
+
+      <RecentBuys locale="ar" />
 
       {/* 🚗 Car Types & 💵 Price Section */}
       <section className="py-16 px-4 max-w-6xl mx-auto">
