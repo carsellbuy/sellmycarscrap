@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { CallButton } from './CallButton';
+import { ADDRESS_TEXT, MAPS_URL } from '@/lib/site';
 import { Car, Facebook, Twitter, Instagram, Phone, Mail, MapPin } from 'lucide-react';
 
 export const Footer = () => {
@@ -88,13 +89,13 @@ export const Footer = () => {
             <ul className="space-y-3 text-gray-400">
               <li>
                 <a 
-                  href="https://goo.gl/maps/Dubai" 
+                  href={MAPS_URL} 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="flex items-center gap-3 hover:text-white transition-colors"
                 >
                   <MapPin className="h-5 w-5 text-brand-gold shrink-0" />
-                  <span>Sheikh Zayed Road, Dubai, UAE</span>
+                  <address className="not-italic">{ADDRESS_TEXT}</address>
                 </a>
               </li>
               <li>

@@ -1,7 +1,7 @@
 // Structured data (JSON-LD) builders. Keep facts here in sync with what the
 // site shows: Google ignores or penalises schema that contradicts the page.
 import { PHONE_E164 } from './lead';
-import { SITE_NAME, SITE_URL } from './site';
+import { ADDRESS, MAPS_URL, SITE_NAME, SITE_URL } from './site';
 import type { Faq } from '@/data/faqs';
 
 export const BUSINESS_ID = `${SITE_URL}/#business`;
@@ -21,11 +21,13 @@ export function businessSchema() {
     description:
       'We buy scrap, used, damaged, accident and non-running cars across the UAE. Free valuation by phone, free towing, RTA paperwork handled and instant payment.',
     telephone: PHONE_E164,
+    hasMap: MAPS_URL,
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'Sheikh Zayed Road',
-      addressLocality: 'Dubai',
-      addressCountry: 'AE',
+      streetAddress: ADDRESS.street,
+      addressLocality: ADDRESS.area,
+      addressRegion: ADDRESS.city,
+      addressCountry: ADDRESS.countryCode,
     },
     areaServed: EMIRATES.map((name) => ({ '@type': 'AdministrativeArea', name })),
     openingHoursSpecification: {

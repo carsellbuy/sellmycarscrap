@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Phone, MessageCircle, Monitor, Check } from 'lucide-react';
+import { Phone, MessageCircle, Monitor, Check, MapPin } from 'lucide-react';
+import { ADDRESS_TEXT, MAPS_URL } from '@/lib/site';
 import { trackButtonClick } from '@/lib/tracking';
 import { CallButton } from './CallButton';
 import { WHATSAPP_HREF } from '@/lib/lead';
@@ -90,6 +91,15 @@ export const ContactSection: React.FC = () => {
               {copied ? "Ready to paste" : "Click to copy number"}
             </span>
           </button>
+        </div>
+
+        {/* Address (keep identical to footer and schema) */}
+        <div className="mt-10 max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-3 text-center sm:text-left text-gray-600">
+          <MapPin className="h-5 w-5 text-brand-red shrink-0" />
+          <address className="not-italic font-medium">{ADDRESS_TEXT}</address>
+          <a href={MAPS_URL} target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-blue-700 hover:underline">
+            Open in Google Maps
+          </a>
         </div>
       </div>
 
