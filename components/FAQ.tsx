@@ -2,29 +2,8 @@
 
 import React, { useState } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
+import { GENERAL_FAQS as FAQS } from '@/data/faqs';
 
-const FAQS = [
-  {
-    question: "Do you buy damaged or non-running cars?",
-    answer: "Yes, absolutely! We specialize in buying scrap, damaged, accident-wrecked, and non-running cars. Whether it has a blown engine, transmission failure, or has been in a major accident, we will offer you a fair price and tow it away for free."
-  },
-  {
-    question: "Which documents do I need to sell my car?",
-    answer: "You will need your original Emirates ID, vehicle registration card (Mulkiya), and bank account details for the transfer. If the car has a mortgage, we need a clearance letter from the bank."
-  },
-  {
-    question: "How long does the process take?",
-    answer: "The entire process usually takes about 30 minutes from inspection to payment. We value your time and aim for the fastest turnaround in the UAE."
-  },
-  {
-    question: "Is the valuation free?",
-    answer: "Yes, our valuation and inspection services are 100% free with no obligation to sell. You can get a quote online or schedule a visit."
-  },
-  {
-    question: "Do you buy cars with expired registration?",
-    answer: "Yes, we buy cars with expired registration. We handle all the necessary RTA paperwork and fines clearance (if applicable) to transfer the ownership legally."
-  }
-];
 
 export const FAQ: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);

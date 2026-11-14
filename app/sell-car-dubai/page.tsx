@@ -10,6 +10,8 @@ export const metadata: Metadata = {
 export default function SellCarDubaiPage() {
   return (
     <ServiceLandingPage 
+      path="/sell-car-dubai"
+      serviceName="Sell your car in Dubai"
       // এখানে পেজ অনুযায়ী টাইটেল চেঞ্জ করা হলো
       title={<>Sell Your Scrap Car in <span className="text-brand-gold">Dubai in Just 30 Minutes</span></>}
       subtitle="We come to your location anywhere in Dubai. Instant cash and free RTA transfer."

@@ -10,6 +10,8 @@ export const metadata: Metadata = {
 export default function SellCarSharjahPage() {
   return (
     <ServiceLandingPage 
+      path="/sell-car-sharjah"
+      serviceName="Sell your car in Sharjah"
       title={<>Sell Your Car in <span className="text-brand-gold">Sharjah</span></>}
       subtitle="Get the best market rate for your car in Sharjah. No hidden fees, free inspection."
       location="Sharjah"

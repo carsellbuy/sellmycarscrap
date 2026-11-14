@@ -10,6 +10,9 @@ import { WhatWeDo } from "@/components/WhatWeDo";
 import { ServiceArea } from "@/components/ServiceArea";
 import { RecentBuys } from "@/components/RecentBuys";
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/JsonLd";
+import { faqSchema } from "@/lib/schema";
+import { GENERAL_FAQS } from "@/data/faqs";
 
 // 1. স্ট্যাটিক ডাটা অবজেক্ট (Sanity এর বিকল্প)
 const homePageData = {
@@ -35,54 +38,10 @@ export async function generateMetadata(): Promise<Metadata> {
 // 3. মেইন কম্পোনেন্ট
 export default function Home() {
   
-  // Organization Schema 
-  const orgSchema = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "SellMyCarScrap",
-    "url": "https://sellmycarscrap.com",
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "+971564990530",
-      "contactType": "customer service"
-    }
-  };
-
-  // FAQ Schema 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "How fast can I sell my car?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "You can sell your car in as little as 30 minutes with our instant valuation service."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Do you buy scrap cars?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes, we buy cars in any condition, including scrap, damaged, and non running vehicles."
-        }
-      }
-    ]
-  };
 
   return (
     <>
-      {/* স্কিমা ইনজেকশন */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
+      <JsonLd data={faqSchema(GENERAL_FAQS)} />
 
       {/* কম্পোনেন্টসমূহ */}
       <Hero 

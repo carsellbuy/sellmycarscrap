@@ -10,6 +10,8 @@ export const metadata: Metadata = {
 export default function SellCarAjmanPage() {
   return (
     <ServiceLandingPage 
+      path="/sell-car-ajman"
+      serviceName="Sell your car in Ajman"
       title={<>Sell Your Car in <span className="text-brand-gold">Ajman</span></>}
       subtitle="Selling your car in Ajman is now easier than ever. Contact us for a free quote."
       location="Ajman"

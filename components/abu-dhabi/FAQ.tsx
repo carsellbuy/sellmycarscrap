@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
+import { ABU_DHABI_FAQS as FAQS } from '@/data/faqs';
 
 export const AbuDhabiFaq = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -10,16 +11,6 @@ export const AbuDhabiFaq = () => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
-  const FAQS = [
-    {
-      question: "Do you provide free towing in musa?",
-      answer: "Yes absolutely! If your car is non running or damaged, we provide completely free towing across all regions of Abu Dhabi including Mussafah."
-    },
-    {
-      question: "How fast can I sell my car in the capital?",
-      answer: "We offer an instant 30 minute inspection and cash payment anywhere in Abu Dhabi. We value your time."
-    }
-  ];
 
   return (
     <section id="faq" className="py-16 bg-gray-50 border-t border-gray-200">

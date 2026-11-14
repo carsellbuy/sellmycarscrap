@@ -7,6 +7,8 @@ import { MobileStickyFooter } from '@/components/MobileStickyFooter';
 import { ScrollToTop } from '@/components/ScrollToTop';
 import { GoogleTagManager } from '@next/third-parties/google'; // অফিশিয়াল প্যাকেজ ইম্পোর্ট
 import { SITE_NAME, SITE_URL } from '@/lib/site';
+import { businessSchema } from '@/lib/schema';
+import { JsonLd } from '@/components/JsonLd';
 import './globals.css';
 
 const outfit = Outfit({ 
@@ -44,6 +46,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         className={`${outfit.variable} ${playfair.variable} flex flex-col min-h-screen bg-brand-light text-brand-dark font-sans antialiased`}
         suppressHydrationWarning={true}
       >
+        <JsonLd data={businessSchema()} />
         <Navbar />
         
         <main className="flex-grow">

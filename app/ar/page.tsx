@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { CallButton } from "@/components/CallButton";
 import { RecentBuys } from "@/components/RecentBuys";
+import { ARABIC_FAQS } from "@/data/faqs";
+import { JsonLd } from "@/components/JsonLd";
+import { faqSchema } from "@/lib/schema";
 import { PHONE_DISPLAY } from "@/lib/lead";
 
 export const metadata: Metadata = {
@@ -14,6 +17,8 @@ export default function ArabicLandingPage() {
   return (
     <div dir="rtl" lang="ar" className="font-sans bg-gray-50 text-gray-900">
       
+      <JsonLd data={faqSchema(ARABIC_FAQS)} />
+
       {/* 🏠 Hero Section */}
       <section className="bg-slate-900 text-white py-20 px-4">
         <div className="max-w-4xl mx-auto text-center">
@@ -164,26 +169,12 @@ export default function ArabicLandingPage() {
       <section className="py-16 px-4 max-w-4xl mx-auto">
         <h2 className="text-3xl font-bold text-center mb-10 text-slate-800">الأسئلة الشائعة</h2>
         <div className="space-y-6">
-          <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
-            <h3 className="font-bold text-lg mb-2 text-slate-900">هل تشترون السيارات بدون ملكية؟</h3>
-            <p className="text-gray-600">نعم، نتعامل مع السيارات التي فُقدت وثائقها أو منتهية الملكية. تواصل معنا لمعرفة التفاصيل.</p>
-          </div>
-          <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
-            <h3 className="font-bold text-lg mb-2 text-slate-900">هل خدمة السحب مجانية؟</h3>
-            <p className="text-gray-600">نعم، نصل إليك ونسحب السيارة مجاناً في دبي والشارقة وعجمان.</p>
-          </div>
-          <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
-            <h3 className="font-bold text-lg mb-2 text-slate-900">كم من الوقت يستغرق الدفع؟</h3>
-            <p className="text-gray-600">الدفع يتم نقداً في نفس اللحظة عند استلام السيارة.</p>
-          </div>
-          <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
-            <h3 className="font-bold text-lg mb-2 text-slate-900">هل تشترون السيارات المتضررة بالحوادث؟</h3>
-            <p className="text-gray-600">نعم، نشتري السيارات المتضررة بجميع درجات الضرر، حتى الخسارة الكلية.</p>
-          </div>
-          <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
-            <h3 className="font-bold text-lg mb-2 text-slate-900">ما هي المناطق التي تخدمونها؟</h3>
-            <p className="text-gray-600">نغطي دبي، الشارقة، عجمان، وأبوظبي. تواصل معنا للتأكد من منطقتك.</p>
-          </div>
+          {ARABIC_FAQS.map((faq) => (
+            <div key={faq.question} className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+              <h3 className="font-bold text-lg mb-2 text-slate-900">{faq.question}</h3>
+              <p className="text-gray-600">{faq.answer}</p>
+            </div>
+          ))}
         </div>
       </section>
 

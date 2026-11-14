@@ -10,6 +10,8 @@ export const metadata: Metadata = {
 export default function SellUnusedCarPage() {
   return (
     <ServiceLandingPage 
+      path="/sell-used-car"
+      serviceName="Sell your used car"
       title={<>Sell Your <span className="text-brand-gold">Used Car</span> for Instant Cash</>}
       subtitle="Get a fair market price for your used car in minutes. Free inspection at your doorstep and same-day payment."
     />

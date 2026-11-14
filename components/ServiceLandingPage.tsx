@@ -10,12 +10,19 @@ import { WhatWeDo } from './WhatWeDo';
 import { ServiceArea } from './ServiceArea';
 import { SeoContent } from './SeoContent';
 import { RecentBuys } from './RecentBuys';
+import { JsonLd } from './JsonLd';
+import { breadcrumbSchema, faqSchema, serviceSchema } from '@/lib/schema';
+import { GENERAL_FAQS } from '@/data/faqs';
 
 interface ServiceLandingPageProps {
   title: React.ReactNode;
   subtitle: string;
   onNavigate?: (view: string) => void;
   location?: string;
+  /** Page URL path, e.g. "/sell-car-dubai" (used for structured data). */
+  path: string;
+  /** Short service name for structured data, e.g. "Sell your car in Dubai". */
+  serviceName: string;
   // --- নতুন ২ লাইন (লাল দাগ ফিক্স করার জন্য) ---
   contentHeading?: string; 
   contentBody?: string;
@@ -25,6 +32,8 @@ export const ServiceLandingPage: React.FC<ServiceLandingPageProps> = ({
   title, 
   subtitle, 
   location,
+  path,
+  serviceName,
   // --- এখানে রিসিভ করছি ---
   contentHeading, 
   contentBody
@@ -32,6 +41,13 @@ export const ServiceLandingPage: React.FC<ServiceLandingPageProps> = ({
 
   return (
     <>
+      <JsonLd
+        data={[
+          serviceSchema({ name: serviceName, path, area: location }),
+          breadcrumbSchema(serviceName, path),
+          faqSchema(GENERAL_FAQS),
+        ]}
+      />
       <Hero customTitle={title} customSubtitle={subtitle} />
       <TrustBadges />
       <WhatWeDo />

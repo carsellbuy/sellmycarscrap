@@ -10,6 +10,8 @@ export const metadata: Metadata = {
 export default function SellAccidentalCarPage() {
   return (
     <ServiceLandingPage 
+      path="/sell-accidental-car"
+      serviceName="Sell your accident car"
       title={<>Sell Your <span className="text-brand-gold">Accidental Car</span> Today</>}
       subtitle="Don't worry about repairs. We buy cars with major or minor accident history. Get a fair price instantly."
       // location নির্দিষ্ট না করলে ডিফল্ট কন্টেন্ট দেখাবে, যা সব জায়গার জন্য প্রযোজ্য
