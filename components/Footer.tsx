@@ -1,5 +1,6 @@
 import React from 'react';
-import Link from 'next/link'; // Link ইম্পোর্ট করা হয়েছে
+import Link from 'next/link';
+import { CallButton } from './CallButton';
 import { Car, Facebook, Twitter, Instagram, Phone, Mail, MapPin } from 'lucide-react';
 
 export const Footer = () => {
@@ -41,7 +42,7 @@ export const Footer = () => {
                 <Link href="/#contact" className="hover:text-white transition-colors">Contact</Link>
               </li>
               <li>
-                <Link href="/#valuation-form" className="hover:text-white transition-colors">Free Valuation</Link>
+                <CallButton trackingName="footer_valuation_call" className="hover:text-white transition-colors">Free Valuation by Phone</CallButton>
               </li>
               <li>
                 <Link href="/#faq" className="hover:text-white transition-colors">FAQ</Link>
@@ -97,13 +98,13 @@ export const Footer = () => {
                 </a>
               </li>
               <li>
-                <a 
-                  href="tel:+971564990530" 
+                <CallButton
+                  trackingName="footer_call"
                   className="flex items-center gap-3 hover:text-white transition-colors"
                 >
                   <Phone className="h-5 w-5 text-brand-gold shrink-0" />
                   <span>+971 56 499 0530</span>
-                </a>
+                </CallButton>
               </li>
               <li>
                 <a 

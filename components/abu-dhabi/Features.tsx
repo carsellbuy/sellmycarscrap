@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Clock, FileCheck, Coins, MapPin } from 'lucide-react';
+import { CallButton } from '@/components/CallButton';
 
 const ABU_DHABI_FEATURES = [
   {
@@ -43,9 +44,9 @@ export const AbuDhabiFeatures = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <a href="#valuation-form" className="inline-block bg-brand-red text-white font-bold py-3 px-8 rounded-lg hover:bg-red-700 transition-colors text-center">
-                Get Your Offer Now
-              </a>
+              <CallButton trackingName="abu_dhabi_features_call" className="inline-block bg-brand-red text-white font-bold py-3 px-8 rounded-lg hover:bg-red-700 transition-colors text-center">
+                📞 Call for Your Offer Now
+              </CallButton>
             </div>
           </div>
           

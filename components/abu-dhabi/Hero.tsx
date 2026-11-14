@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { ValuationForm } from '../ValuationForm'; // গ্লোবাল ফর্ম
+import { CallOfferCard } from '../CallOfferCard';
 import { Check, Phone } from 'lucide-react';
 import { CallButton } from '@/components/CallButton';
 import { PHONE_DISPLAY } from '@/lib/lead';
@@ -60,7 +60,7 @@ export const AbuDhabiHero = () => {
           </div>
 
           <div className="w-full max-w-md mx-auto lg:ml-auto">
-             <ValuationForm />
+             <CallOfferCard />
           </div>
 
         </div>

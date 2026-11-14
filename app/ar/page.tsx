@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { ArabicLeadForm } from "@/components/ArabicLeadForm";
 import { CallButton } from "@/components/CallButton";
 import { PHONE_DISPLAY } from "@/lib/lead";
 
@@ -30,9 +29,6 @@ export default function ArabicLandingPage() {
             <span className="text-2xl">📞 اتصل الآن واحصل على السعر فوراً</span>
             <span className="text-xl mt-1" dir="ltr">{PHONE_DISPLAY}</span>
           </CallButton>
-          <p className="mt-4 text-gray-400">
-            أو <a href="#lead-form" className="underline hover:text-white">اترك بياناتك في النموذج</a>
-          </p>
         </div>
       </section>
 
@@ -46,20 +42,25 @@ export default function ArabicLandingPage() {
         </div>
       </div>
 
-      {/* 📋 Form Section */}
-      <section id="lead-form" className="py-16 px-4 max-w-3xl mx-auto scroll-mt-24">
+      {/* 📞 Call Box */}
+      <section className="py-16 px-4 max-w-3xl mx-auto">
         <div className="bg-white p-8 rounded-xl shadow-md border border-gray-100">
           <h2 className="text-2xl font-bold mb-4 text-center text-slate-800">
             احصل على أعلى سعر لسيارتك الآن
           </h2>
           <CallButton
             trackingName="ar_form_call"
-            className="flex items-center justify-center gap-2 w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-4 rounded-lg mb-6 text-lg"
+            className="flex items-center justify-center gap-2 w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-5 rounded-xl mb-8 text-xl"
           >
-            📞 أسرع طريقة: اتصل بنا <span dir="ltr">{PHONE_DISPLAY}</span>
+            📞 اتصل بنا <span dir="ltr">{PHONE_DISPLAY}</span>
           </CallButton>
-          <p className="text-center text-gray-500 mb-6">أو اترك بياناتك:</p>
-          <ArabicLeadForm />
+          <p className="text-center text-gray-600 mb-3 font-medium">جهّز هذه المعلومات قبل الاتصال:</p>
+          <ul className="space-y-2 text-gray-700 max-w-sm mx-auto">
+            <li>✅ نوع السيارة والموديل وسنة الصنع</li>
+            <li>✅ حالة السيارة (سكراب، متضررة، لا تعمل)</li>
+            <li>✅ موقعك والإمارة</li>
+          </ul>
+          <p className="text-center text-sm text-gray-500 mt-6">نعطيك السعر خلال المكالمة، بدون أي التزام.</p>
         </div>
       </section>
 
@@ -73,7 +74,7 @@ export default function ArabicLandingPage() {
             <div className="p-6">
               <div className="text-5xl mb-4">🚗</div>
               <h3 className="text-xl font-bold mb-3">أخبرنا عن سيارتك</h3>
-              <p className="text-gray-600">اتصل بنا أو املأ النموذج وأخبرنا عن الموديل، الحالة، وموقعك.</p>
+              <p className="text-gray-600">اتصل بنا وأخبرنا عن الموديل، الحالة، وموقعك.</p>
             </div>
             <div className="p-6">
               <div className="text-5xl mb-4">💰</div>

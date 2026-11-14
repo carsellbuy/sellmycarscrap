@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image'; // Next.js Image ইম্পোর্ট
-import { ValuationForm } from './ValuationForm';
+import { CallOfferCard } from './CallOfferCard';
 import { Check, Phone } from 'lucide-react';
 import { CallButton } from '@/components/CallButton';
 import { PHONE_DISPLAY } from '@/lib/lead';
@@ -78,7 +78,7 @@ export const Hero: React.FC<HeroProps> = ({ customTitle, customSubtitle }) => {
 
           {/* Form Container */}
           <div className="w-full max-w-md mx-auto lg:ml-auto">
-             <ValuationForm />
+             <CallOfferCard />
           </div>
 
         </div>
