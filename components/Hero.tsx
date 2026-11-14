@@ -1,8 +1,7 @@
 "use client";
 
 import React from 'react';
-import Image from 'next/image'; // Next.js Image ইম্পোর্ট
-import { CallOfferCard } from './CallOfferCard';
+import { FreeTowingImage } from './FreeTowingImage';
 import { Check, Phone } from 'lucide-react';
 import { CallButton } from '@/components/CallButton';
 import { PHONE_DISPLAY } from '@/lib/lead';
@@ -15,17 +14,8 @@ interface HeroProps {
 export const Hero: React.FC<HeroProps> = ({ customTitle, customSubtitle }) => {
   return (
     <div className="relative bg-brand-dark overflow-hidden min-h-[600px] lg:min-h-[700px] flex items-center">
-      {/* Background Image with Overlay (Optimized) */}
+      {/* Background gradient */}
       <div className="absolute inset-0 z-0">
-        <Image 
-          src="/tow-truck-hero.webp" // আপনার লোকাল ইমেজ
-          alt="Car Towing Service Dubai" 
-          fill
-          priority // এটি LCP ইম্প্রুভ করবে (সবচেয়ে জরুরি)
-          className="object-cover opacity-20"
-          quality={80} // ইমেজের সাইজ নিয়ন্ত্রণে রাখার জন্য
-          sizes="100vw"
-        />
         <div className="absolute inset-0 bg-gradient-to-r from-brand-dark via-brand-dark/95 to-brand-dark/80 lg:to-transparent"></div>
       </div>
 
@@ -77,8 +67,8 @@ export const Hero: React.FC<HeroProps> = ({ customTitle, customSubtitle }) => {
           </div>
 
           {/* Form Container */}
-          <div className="w-full max-w-md mx-auto lg:ml-auto">
-             <CallOfferCard />
+          <div className="w-full max-w-xl mx-auto lg:ml-auto">
+             <FreeTowingImage />
           </div>
 
         </div>

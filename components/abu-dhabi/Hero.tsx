@@ -1,8 +1,7 @@
 "use client";
 
 import React from 'react';
-import Image from 'next/image';
-import { CallOfferCard } from '../CallOfferCard';
+import { FreeTowingImage } from '../FreeTowingImage';
 import { Check, Phone } from 'lucide-react';
 import { CallButton } from '@/components/CallButton';
 import { PHONE_DISPLAY } from '@/lib/lead';
@@ -11,15 +10,6 @@ export const AbuDhabiHero = () => {
   return (
     <div className="relative bg-brand-dark overflow-hidden min-h-[600px] lg:min-h-[700px] flex items-center">
       <div className="absolute inset-0 z-0">
-        <Image 
-          src="/tow-truck-hero.webp" 
-          alt="Car Towing Service Abu Dhabi" 
-          fill
-          priority 
-          className="object-cover opacity-20"
-          quality={80} 
-          sizes="100vw"
-        />
         <div className="absolute inset-0 bg-gradient-to-r from-brand-dark via-brand-dark/95 to-brand-dark/80 lg:to-transparent"></div>
       </div>
 
@@ -59,8 +49,8 @@ export const AbuDhabiHero = () => {
             </div>
           </div>
 
-          <div className="w-full max-w-md mx-auto lg:ml-auto">
-             <CallOfferCard />
+          <div className="w-full max-w-xl mx-auto lg:ml-auto">
+             <FreeTowingImage alt="Free car towing in Abu Dhabi: flatbed tow truck collecting a car" />
           </div>
 
         </div>
