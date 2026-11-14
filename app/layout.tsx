@@ -32,6 +32,9 @@ export const metadata: Metadata = {
     images: [{ url: '/tow-truck-hero.webp', alt: 'SellMyCarScrap tow truck collecting a car in Dubai' }],
   },
   twitter: { card: 'summary_large_image' },
+  verification: {
+    google: 'UrYkZgFYXiZlOeXsD9dEmbsjplmDqohdy5OMnuelq7w',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
