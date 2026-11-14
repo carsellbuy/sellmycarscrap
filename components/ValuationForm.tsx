@@ -2,8 +2,9 @@
 
 import React, { useState } from 'react';
 import { CAR_BRANDS } from '../constants';
-import { Loader2, Send } from 'lucide-react';
-import { WHATSAPP_NUMBER, normalizeUAEMobile, pushLeadEvent } from '@/lib/lead';
+import { Loader2, Send, Phone } from 'lucide-react';
+import { CallButton } from './CallButton';
+import { PHONE_DISPLAY, WHATSAPP_NUMBER, normalizeUAEMobile, pushLeadEvent } from '@/lib/lead';
 
 export const ValuationForm: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -142,7 +143,19 @@ Phone: +971${phone}`;
           </div>
         </form>
 
-        <p className="text-xs text-gray-400 text-center mt-6 flex items-center justify-center gap-1">
+        <div className="flex items-center gap-3 my-5 text-xs font-semibold uppercase tracking-wider text-gray-400">
+          <span className="h-px flex-1 bg-gray-200" /> or get your price faster <span className="h-px flex-1 bg-gray-200" />
+        </div>
+
+        <CallButton
+          trackingName="valuation_form_call"
+          className="flex items-center justify-center gap-2 w-full rounded-2xl bg-brand-dark hover:bg-slate-800 text-white font-bold py-4 transition-colors"
+        >
+          <Phone className="h-5 w-5 fill-current text-brand-gold" />
+          Call {PHONE_DISPLAY}
+        </CallButton>
+
+        <p className="text-xs text-gray-400 text-center mt-5 flex items-center justify-center gap-1">
           <svg viewBox="0 0 24 24" fill="none" className="w-4 h-4 text-green-500" stroke="currentColor" strokeWidth="2">
             <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>

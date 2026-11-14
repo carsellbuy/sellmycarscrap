@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { ArabicLeadForm } from "@/components/ArabicLeadForm";
+import { CallButton } from "@/components/CallButton";
+import { PHONE_DISPLAY } from "@/lib/lead";
 
 export const metadata: Metadata = {
   alternates: { canonical: '/ar', languages: { en: '/', ar: '/ar' } },
@@ -21,9 +23,16 @@ export default function ArabicLandingPage() {
           <p className="text-xl mb-8 text-gray-300">
             هل تبحث عن بيع سيارة سكراب في دبي أو الإمارات؟ سكراب، متضررة، أو غير قابلة للتشغيل؟ لا مشكلة، نصلك اليوم ونقدم عرضاً فورياً.
           </p>
-          <a href="#lead-form" className="inline-block bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-8 rounded-lg text-xl transition duration-300 shadow-lg">
-            احصل على عرض مجاني الآن
-          </a>
+          <CallButton
+            trackingName="ar_hero_call"
+            className="inline-flex flex-col items-center bg-yellow-400 hover:bg-yellow-300 text-slate-900 font-bold py-4 px-10 rounded-2xl shadow-xl transition duration-300"
+          >
+            <span className="text-2xl">📞 اتصل الآن واحصل على السعر فوراً</span>
+            <span className="text-xl mt-1" dir="ltr">{PHONE_DISPLAY}</span>
+          </CallButton>
+          <p className="mt-4 text-gray-400">
+            أو <a href="#lead-form" className="underline hover:text-white">اترك بياناتك في النموذج</a>
+          </p>
         </div>
       </section>
 
@@ -40,9 +49,16 @@ export default function ArabicLandingPage() {
       {/* 📋 Form Section */}
       <section id="lead-form" className="py-16 px-4 max-w-3xl mx-auto scroll-mt-24">
         <div className="bg-white p-8 rounded-xl shadow-md border border-gray-100">
-          <h2 className="text-2xl font-bold mb-6 text-center text-slate-800">
+          <h2 className="text-2xl font-bold mb-4 text-center text-slate-800">
             احصل على أعلى سعر لسيارتك الآن
           </h2>
+          <CallButton
+            trackingName="ar_form_call"
+            className="flex items-center justify-center gap-2 w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-4 rounded-lg mb-6 text-lg"
+          >
+            📞 أسرع طريقة: اتصل بنا <span dir="ltr">{PHONE_DISPLAY}</span>
+          </CallButton>
+          <p className="text-center text-gray-500 mb-6">أو اترك بياناتك:</p>
           <ArabicLeadForm />
         </div>
       </section>
@@ -57,7 +73,7 @@ export default function ArabicLandingPage() {
             <div className="p-6">
               <div className="text-5xl mb-4">🚗</div>
               <h3 className="text-xl font-bold mb-3">أخبرنا عن سيارتك</h3>
-              <p className="text-gray-600">شارك معنا تفاصيل سيارتك عبر الواتساب أو النموذج، الموديل، الحالة، وموقعك.</p>
+              <p className="text-gray-600">اتصل بنا أو املأ النموذج وأخبرنا عن الموديل، الحالة، وموقعك.</p>
             </div>
             <div className="p-6">
               <div className="text-5xl mb-4">💰</div>
@@ -171,15 +187,17 @@ export default function ArabicLandingPage() {
       <section className="bg-slate-900 text-white py-16 px-4 text-center">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl font-bold mb-4">جاهز للبيع؟ تواصل معنا الآن</h2>
-          <p className="text-gray-300 mb-8 text-lg">فريقنا متاح 7 أيام في الأسبوع، رد سريع عبر واتساب</p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <a href="https://wa.me/971564990530" target="_blank" rel="noreferrer" className="bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-8 rounded-lg text-lg flex items-center justify-center gap-2 transition">
-              💬 واتساب الآن
-            </a>
-            <a href="tel:+971564990530" className="bg-transparent border-2 border-white hover:bg-white hover:text-slate-900 font-bold py-4 px-8 rounded-lg text-lg flex items-center justify-center gap-2 transition">
-              📞 اتصل بنا
-            </a>
-          </div>
+          <p className="text-gray-300 mb-8 text-lg">فريقنا متاح 7 أيام في الأسبوع، اتصل بنا مباشرة واحصل على السعر خلال المكالمة</p>
+          <CallButton
+            trackingName="ar_final_call"
+            className="inline-flex items-center justify-center gap-3 bg-yellow-400 hover:bg-yellow-300 text-slate-900 font-bold py-5 px-10 rounded-2xl text-2xl transition"
+          >
+            📞 اتصل الآن <span dir="ltr">{PHONE_DISPLAY}</span>
+          </CallButton>
+          <p className="mt-5 text-sm text-gray-400">
+            تفضل الكتابة؟{" "}
+            <a href="https://wa.me/971564990530" target="_blank" rel="noopener noreferrer" className="underline hover:text-white">راسلنا على واتساب</a>
+          </p>
         </div>
       </section>
 

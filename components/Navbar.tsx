@@ -4,21 +4,13 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation'; // পেজ ডিটেক্ট করার জন্য
 import { Menu, X, Phone, Car } from 'lucide-react';
-import { trackButtonClick } from '@/lib/tracking';
+import { CallButton } from './CallButton';
+import { PHONE_DISPLAY } from '@/lib/lead';
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [showCallModal, setShowCallModal] = useState(false);
   const pathname = usePathname(); // বর্তমান URL পাথ পাওয়ার জন্য
 
-  const phoneNumber = "+971564990530";
-  const displayPhone = "+971 56 499 0530";
-
- const confirmCall = () => {
-    trackButtonClick('navbar_call_confirm'); // GTM এ কনফার্ম কলের ডাটা যাবে
-    window.location.href = `tel:${phoneNumber}`;
-    setShowCallModal(false);
-  };
 
   // লিংকগুলো এখানে ডিফাইন করলাম যাতে পাথ (href) ঠিক থাকে
   const navLinks = [
@@ -44,25 +36,25 @@ export const Navbar = () => {
             {/* Logo */}
             <Link 
               href="/"
-              className="flex-shrink-0 flex items-center space-x-2 cursor-pointer"
+              className="min-w-0 flex items-center gap-2 cursor-pointer"
               onClick={() => setIsOpen(false)}
             >
-              <div className="bg-brand-gold p-2 rounded-lg">
+              <div className="bg-brand-gold p-1.5 sm:p-2 rounded-lg">
                 <Car className="h-6 w-6 text-brand-dark" />
               </div>
-              <span className="font-serif text-2xl font-bold tracking-tight text-white">
+              <span className="font-serif text-lg sm:text-2xl font-bold tracking-tight text-white">
                 SellMyCarScrap<span className="text-brand-gold"></span>
               </span>
             </Link>
 
             {/* Desktop Menu */}
             <div className="hidden md:block">
-              <div className="ml-10 flex items-baseline space-x-8">
+              <div className="ml-6 lg:ml-10 flex items-baseline space-x-2 lg:space-x-8">
                 {navLinks.map((link) => (
                   <Link
                     key={link.name}
                     href={link.href}
-                    className={`hover:text-brand-gold transition-colors px-3 py-2 rounded-md text-sm font-medium uppercase tracking-wider ${
+                    className={`whitespace-nowrap hover:text-brand-gold transition-colors px-3 py-2 rounded-md text-sm font-medium uppercase tracking-wider ${
                       isActive(link.href) ? 'text-brand-gold' : ''
                     }`}
                   >
@@ -74,18 +66,27 @@ export const Navbar = () => {
 
             {/* CTA Button */}
             <div className="hidden md:flex items-center">
-              <button
-                onClick={() => setShowCallModal(true)}
-                className="flex items-center gap-2 bg-brand-gold hover:bg-yellow-500 text-brand-dark font-bold py-2 px-6 rounded-full transition-all transform hover:scale-105"
+              <CallButton
+                trackingName="navbar_call"
+                className="flex items-center gap-2 whitespace-nowrap bg-brand-gold hover:bg-yellow-500 text-brand-dark font-bold py-2.5 px-6 rounded-full transition-all transform hover:scale-105 shadow-lg shadow-yellow-500/20"
               >
-                <Phone className="h-4 w-4" />
-                <span>{displayPhone}</span>
-              </button>
+                <Phone className="h-4 w-4 fill-current" />
+                <span className="lg:hidden">Call Now</span>
+                <span className="hidden lg:inline">Call {PHONE_DISPLAY}</span>
+              </CallButton>
             </div>
 
             {/* Mobile menu button */}
-            <div className="-mr-2 flex md:hidden">
+            <div className="-mr-2 flex items-center gap-2 md:hidden">
+              <CallButton
+                trackingName="navbar_mobile_call"
+                className="flex items-center gap-1.5 whitespace-nowrap bg-brand-gold active:bg-yellow-500 text-brand-dark font-bold py-2 px-3 rounded-full text-sm"
+              >
+                <Phone className="h-4 w-4 fill-current" />
+                Call
+              </CallButton>
               <button
+                aria-label="Open menu"
                 onClick={() => setIsOpen(!isOpen)}
                 className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none"
               >
@@ -111,52 +112,18 @@ export const Navbar = () => {
                   {link.name}
                 </Link>
               ))}
-              <button
-                 onClick={() => {
-                   setIsOpen(false);
-                   setShowCallModal(true);
-                 }}
-                 className="w-full flex items-center gap-2 text-brand-gold font-bold px-3 py-4 border-t border-gray-700 mt-4"
+              <CallButton
+                trackingName="navbar_menu_call"
+                className="w-full flex items-center gap-2 text-brand-gold font-bold px-3 py-4 border-t border-gray-700 mt-4"
               >
-                <Phone className="h-5 w-5" />
-                Call Now: {displayPhone}
-              </button>
+                <Phone className="h-5 w-5 fill-current" />
+                Call Now: {PHONE_DISPLAY}
+              </CallButton>
             </div>
           </div>
         )}
       </nav>
 
-      {/* Call Confirmation Modal */}
-      {showCallModal && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="bg-white rounded-2xl shadow-2xl max-w-sm w-full p-6 transform transition-all scale-100">
-            <div className="text-center">
-                <div className="mx-auto bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mb-4">
-                    <Phone className="h-8 w-8 text-blue-600" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Confirm Call</h3>
-                <p className="text-gray-600 mb-8">
-                    Are you sure you want to call <br/>
-                    <span className="font-bold text-gray-900 text-lg">{displayPhone}</span>?
-                </p>
-                <div className="grid grid-cols-2 gap-4">
-                    <button 
-                        onClick={() => setShowCallModal(false)}
-                        className="px-4 py-3 bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold rounded-xl transition-colors"
-                    >
-                        Cancel
-                    </button>
-                    <button 
-                        onClick={confirmCall}
-                        className="px-4 py-3 bg-brand-gold hover:bg-yellow-500 text-brand-dark font-bold rounded-xl shadow-lg transition-colors"
-                    >
-                        Call Now
-                    </button>
-                </div>
-            </div>
-          </div>
-        </div>
-      )}
     </>
   );
 };

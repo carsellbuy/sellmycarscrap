@@ -3,7 +3,9 @@
 import React from 'react';
 import Image from 'next/image'; // Next.js Image ইম্পোর্ট
 import { ValuationForm } from './ValuationForm';
-import { Check } from 'lucide-react';
+import { Check, Phone } from 'lucide-react';
+import { CallButton } from '@/components/CallButton';
+import { PHONE_DISPLAY } from '@/lib/lead';
 
 interface HeroProps {
   customTitle?: React.ReactNode;
@@ -60,6 +62,17 @@ export const Hero: React.FC<HeroProps> = ({ customTitle, customSubtitle }) => {
                 <Check className="h-5 w-5 text-brand-gold" strokeWidth={3} />
                 <span className="text-white font-bold">Free Towing</span>
               </div>
+            </div>
+            {/* Primary CTA: phone call */}
+            <div className="pt-4 flex flex-col items-center lg:items-start gap-2">
+              <CallButton
+                trackingName="hero_call"
+                className="inline-flex items-center gap-3 whitespace-nowrap bg-brand-gold hover:bg-yellow-500 text-brand-dark font-bold text-lg sm:text-xl py-4 px-6 sm:px-8 rounded-2xl shadow-xl shadow-yellow-500/20 transition-transform hover:scale-105"
+              >
+                <Phone className="h-6 w-6 fill-current" />
+                Call Now: {PHONE_DISPLAY}
+              </CallButton>
+              <p className="text-sm text-gray-400">Speak to a buyer now and get your price on the call. Open 7 days.</p>
             </div>
           </div>
 

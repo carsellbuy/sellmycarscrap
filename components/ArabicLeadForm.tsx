@@ -45,7 +45,7 @@ export function ArabicLeadForm() {
         <input id="ar-name" name="name" type="text" required className={inputClass} placeholder="اسمك" />
       </div>
       <div>
-        <label htmlFor="ar-phone" className="block text-gray-700 mb-2 font-medium">رقم الهاتف (واتساب)</label>
+        <label htmlFor="ar-phone" className="block text-gray-700 mb-2 font-medium">رقم الهاتف</label>
         <input id="ar-phone" name="phone" type="tel" dir="ltr" required className={`${inputClass} text-right`} placeholder="05x xxx xxxx" />
         {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
       </div>
@@ -74,7 +74,7 @@ export function ArabicLeadForm() {
       <button type="submit" className="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-4 rounded-lg mt-4 transition duration-300">
         أرسل طلبك (رد خلال دقائق)
       </button>
-      <p className="text-center text-sm text-gray-500 mt-2">سنتواصل معك عبر واتساب خلال 30 دقيقة</p>
+      <p className="text-center text-sm text-gray-500 mt-2">سيتم إرسال طلبك عبر واتساب، وسنتصل بك خلال 30 دقيقة</p>
     </form>
   );
 }
