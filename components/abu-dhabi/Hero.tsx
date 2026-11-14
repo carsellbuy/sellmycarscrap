@@ -50,7 +50,7 @@ export const AbuDhabiHero = () => {
           </div>
 
           <div className="w-full max-w-xl mx-auto lg:ml-auto">
-             <FreeTowingImage alt="Free car towing in Abu Dhabi: flatbed tow truck collecting a car" />
+             <FreeTowingImage alt="Free car towing in Abu Dhabi: a car we bought, loaded on our flatbed tow truck" />
           </div>
 
         </div>

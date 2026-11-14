@@ -2,18 +2,18 @@ import React from 'react';
 import Image from 'next/image';
 import { Truck } from 'lucide-react';
 
-/** Hero visual: our tow truck with a "Free Towing" badge. */
-export function FreeTowingImage({ alt = 'Free car towing in the UAE: flatbed tow truck collecting a car' }: { alt?: string }) {
+/** Hero visual: a customer's car on our tow truck, with a "Free Towing" badge. */
+export function FreeTowingImage({ alt = 'Free car towing in the UAE: a Ford Explorer we bought, loaded on our flatbed tow truck' }: { alt?: string }) {
   return (
-    <figure className="relative">
+    <figure className="relative mx-auto w-full max-w-[22rem] sm:max-w-sm">
       <div className="overflow-hidden rounded-3xl bg-gradient-to-br from-gray-100 to-gray-300 ring-4 ring-brand-gold/60 shadow-[0_25px_60px_rgba(0,0,0,0.45)]">
         <Image
-          src="/tow-truck-hero.webp"
+          src="/hero-tow-truck-explorer.webp"
           alt={alt}
-          width={1366}
-          height={579}
+          width={720}
+          height={900}
           priority
-          sizes="(max-width: 1024px) 100vw, 50vw"
+          sizes="(max-width: 640px) 352px, 384px"
           className="w-full h-auto"
         />
       </div>
